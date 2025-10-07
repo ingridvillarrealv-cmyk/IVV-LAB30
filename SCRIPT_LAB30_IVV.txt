@@ -1,0 +1,22 @@
+#Cargar paquetes
+library(data.table)
+
+#Importar bases de datos
+choose.files()
+choose.files()
+
+#Crear una variable
+gree.products <- read.csv("C:\\Users\\Ingrid\\Desktop\\Complejidad económica\\LAB 30\\green products.csv")
+all.products <- read.csv("C:\\Users\\Ingrid\\Desktop\\Complejidad económica\\LAB 30\\COMPLETE_YEARS_PRODUCTS.csv")
+
+#Leer elementos como tabla
+gree.products <- as.data.table(gree.products)
+all.products <- as.data.table(all.products)
+
+#Hacer el merge
+merge.allproducts = merge(all.products, gree.products, by= "product_code")
+
+merge.full = merge(all.products, gree.products, by= "product_code", all.x = TRUE)
+
+#Exportar archivo
+write.csv(merge.full, file = "merge.full.csv")
